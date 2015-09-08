@@ -1,0 +1,23 @@
+{
+  "name": "home",
+  "version": "0.0.0",
+  "authors": [
+    "p.kuznecov <kuznetps@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "1.*",
+    "bootstrap": "*",
+    "fontawesome": "~4.4.0"
+  }
+}
