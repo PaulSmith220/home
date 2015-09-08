@@ -42,18 +42,16 @@
             <li>
               {{#if user}}
                 <p class="navbar-text">
-                  <strong>Hi,</strong> 
-                  <img src="{{user.avatar}}" width="20" height="20"> 
                   {{user.username}}
                 </p>
                 </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li>
-                    <a href="/logout">Log Out</a>
+                    <a href="/logout">Выйти</a>
                   </li>
               {{else}}
-                <a href="/signin">Sign In</a>
+                <a href="/">Войти</a>
                 </li>
               {{/if}}
           </ul>
