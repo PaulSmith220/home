@@ -7,11 +7,10 @@ var express = require('express'),
     session = require('express-session'),
     passport = require('passport'),
     LocalStrategy = require('passport-local'),
-    TwitterStrategy = require('passport-twitter'),
-    GoogleStrategy = require('passport-google'),
-    FacebookStrategy = require('passport-facebook'),
     mongoose = require('mongoose'),
-    config = require("./config.js")
+    config = require("./config.js"),
+    http = require("http"),
+    request = require("request");
 
 var User = require("./models/User").User;
 
@@ -125,6 +124,9 @@ var userCtrl = require("./controllers/users.js");
 
 app.all('private', userCtrl.mustAuthenticatedMw);
 app.all('private/*', userCtrl.mustAuthenticatedMw);
+app.all('cam',       userCtrl.mustAuthenticatedMw);
+app.all('cam/*',     userCtrl.mustAuthenticatedMw);
+
 
 app.post('/login',                  userCtrl.login);
 app.post('/register',               userCtrl.register);
@@ -133,6 +135,17 @@ app.get('/logout',                  userCtrl.logout);
 app.get('/private', function(req, res) {
   res.render('private', {user: req.user});
 });
+
+app.get('/cam', function(req, res) {
+ if (req.isAuthenticated()) {
+  var newurl = 'http://localhost:8081/';
+  request(newurl).pipe(res);
+ } else {
+  res.redirect('/');
+ }
+});
+
+
 
 //displays our homepage
 app.get('/', function(req, res){
